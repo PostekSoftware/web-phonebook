@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.name }} - Phonebook</title>
+    <link rel="stylesheet" href="/static/web-phonebook.css">
+</head>
+
+<body>
+    {% if admin %}
+    Logged in as {{ username }}<br />
+    <form action="\admin" method="get">
+        <input type="submit" value="Admin">
+    </form>
+    <form action="/admin" method="post">
+        <input type="hidden" name="logout" value="true">
+        <input type="submit" value="Logout">
+    </form>
+    {% endif %}
+    <center>
+        <h1>{{ page.name }}</h1>
+        <table cellspacing="0" cellpadding="0">
+            <thead id="global-thead">
+                <tr>
+                    <th>Room</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+            {% for book in page.books %}
+            <thead id="book-thead">
+                <tr>
+                    <th colspan="3">
+                        {{ book.name }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for number in book.numbers %}
+                <tr>
+                    <td>{{ number.location }}</td>
+                    <td>{{ number.name }}</td>
+                    <td>{{ number.phoneInt }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% for group in book.groups %}
+            <thead id="group-thead">
+                <tr>
+                    <th colspan="3">
+                        {{ group.name }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for number in group.numbers %}
+                <tr>
+                    <td>{{ number.location }}</td>
+                    <td>{{ number.name }}</td>
+                    <td>{{ number.phoneInt }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endfor %}
+            {% endfor %}
+        </table>
+    </center>
+</body>
+
+</html>

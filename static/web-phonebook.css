@@ -1,0 +1,56 @@
+html {
+    background: #000;
+    color: #fff;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+center {
+    margin: auto;
+    margin-top: 4rem;
+    width: 90vw;
+    max-width: 48rem;
+    background: #111;
+    padding: 1rem;
+}
+
+table {
+    border: none;
+    text-align: left;
+    width: 100%;
+}
+
+thead#global-thead {
+    background-color: #555;
+}
+
+thead#book-thead {
+    background-color: #444;
+}
+
+thead#book-thead tr th {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+thead#group-thead {
+    background-color: #2a2a2a;
+}
+
+thead#group-thead tr th {
+    padding-top: 0.75rem;
+    font-size: 1.1rem;
+}
+
+th,
+td {
+    padding: 0.5rem;
+}
+
+tbody tr:nth-child(even) {
+    background: #181818;
+}

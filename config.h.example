@@ -1,0 +1,6 @@
+#define CONF_IP "0.0.0.0"
+#define CONF_PORT 3568
+#define CONF_APP_DIR "app"
+
+#define CONF_APP_INCLUDES {""}
+#define CONF_APP_LINK {""}
