@@ -6,34 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phonebook Admin - {{ phonebook.name }}</title>
     <script src="/static/jsoneditor.min.js"></script>
+    <link rel="icon" href="/static/icon.png">
+    <link rel="stylesheet" href="/static/web-phonebook.css">
+    <script src="/static/common.js" defer></script>
     <style>
-        input {
-            width: 100%;
+        body {
+            color: var(--on-background);
         }
     </style>
 </head>
 
 <body>
-    <p><a href="/">Back</a></p>
-    Logged In! {{ username }}
-    <form action="/admin" method="post">
-        <input type="hidden" name="logout" value="true">
-        <button type="submit">Logout</button>
-    </form>
-    <br>
-    <button onclick="save()">Save phonebook</button>
-    <form id="sendForm" action="/admin" method="post" style="display: none;">
-        <input width="6rem" id="valueForm" type="text" name="update" value="">
-    </form>
-    <div id='editor_holder'></div>
+    <div class="admin-header">
+        <div class="admin-header-width">
+            <p>Hello {{ username }}</p>
+            <button class="button" onclick="landing()">Home</button>
+            <button class="button-variant" onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="body">
+            <div class="body-logo"></div>
+            <button style="margin: 5px !important;" onclick="save()" class="button">Save phonebook</button>
+            <form id="sendForm" action="/admin" method="post" style="display: none;">
+                <input width="6rem" id="valueForm" type="text" name="update" value="">
+            </form>
+            <div style="margin: 5px;" id='editor_holder'></div>
+            <button style="margin: 5px !important;" onclick="saveLang()" class="button">Save language file</button>
+            <form id="sendFormLang" action="/admin" method="post" style="display: none;">
+                <input width="6rem" id="valueFormLang" type="text" name="lang" value="">
+            </form>
+            <div style="margin: 5px;" id='editor_holder_lang'></div>
+        </div>
+    </div>
 
     <script>
         var phonebook = {{ phonebook }}
+        var lang = {{ lang }}
         console.log(phonebook)
+        console.log(lang)
 
         const sendForm = document.getElementById('sendForm')
+        const sendFormLang = document.getElementById('sendFormLang')
         const valueForm = document.getElementById('valueForm')
+        const valueFormLang = document.getElementById('valueFormLang')
         const ed = document.getElementById('editor_holder');
+        const edl = document.getElementById('editor_holder_lang');
 
         var editor = new JSONEditor(ed, {
             startval: phonebook,
@@ -142,10 +160,42 @@
             }
         });
 
+        var editorl = new JSONEditor(edl, {
+            startval: lang,
+            theme: "html",
+            schema: {
+                type: "object",
+                title: "Language config",
+                properties: {
+                    search: {
+                        type: "string",
+                        title: "'Search...'"
+                    },
+                    room: {
+                        type: "string",
+                        title: "'Room'"
+                    },
+                    name: {
+                        type: "string",
+                        title: "'Name'"
+                    },
+                    phone: {
+                        type: "string",
+                        title: "'Phone'"
+                    },
+                }
+            }
+        })
+
         function save() {
             phonebook = editor.getValue();
             valueForm.value = JSON.stringify(phonebook)
             sendForm.submit()
+        }
+        function saveLang() {
+            lang = editorl.getValue();
+            valueFormLang.value = JSON.stringify(lang)
+            sendFormLang.submit()
         }
     </script>
 </body>

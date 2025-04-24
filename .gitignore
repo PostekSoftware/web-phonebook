@@ -4,3 +4,4 @@ out/
 config.h
 
 db/
+static/logo.png

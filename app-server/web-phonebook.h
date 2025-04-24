@@ -171,3 +171,31 @@ inline void from_json(const json &j, admin &a)
 }
 
 void loadAdminSettings(std::vector<admin> &a, bool &al);
+
+struct language
+{
+    std::string search = "";
+    std::string room = "";
+    std::string name = "";
+    std::string phone = "";
+};
+inline void to_json(json &j, const language &l)
+{
+    j = json{{"search", l.search}, {"room", l.room}, {"name", l.name}, {"phone", l.phone}};
+}
+inline void from_json(const json &j, language &l)
+{
+    try
+    {
+        j.at("search").get_to(l.search);
+        j.at("room").get_to(l.room);
+        j.at("name").get_to(l.name);
+        j.at("phone").get_to(l.phone);
+    }
+    catch (const nlohmann::json_abi_v3_11_3::detail::type_error &e)
+    {
+        std::cerr << "Parsing lang: " << e.what() << '\n';
+    }
+}
+void loadLanguage(language &lang, bool &ll);
+void saveLanguage(const language &lang);

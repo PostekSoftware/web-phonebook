@@ -1,56 +1,214 @@
-html {
-    background: #000;
-    color: #fff;
+@font-face {
+    font-family: roboto;
+    src: url(/static/Roboto-VariableFont_wdth,wght.ttf);
 }
 
-body {
+* {
+    --background: #121212;
+
+    --surface-1: #1D1D1D;
+    --surface-2: #212121;
+    --surface-3: #242424;
+    --surface-4: #262626;
+    --surface-5: #2C2C2C;
+    --surface-6: #323232;
+    --surface-7: #373737;
+
+    --primary: #80E3F8;
+    --primary-variant: #009FBA;
+    --secondary: #FAB668;
+    --error: #FF3D5A;
+
+    --on-background: #FFFFFF;
+    --on-accent: #000000;
+
+    --high-emphasis: #E0E0E0;
+    --medium-emphasis: #A0A0A0;
+    --disabled: #6C6C6C;
+
     margin: 0;
-    width: 100vw;
-    min-height: 100vh;
+    padding: 0;
+
+    font-family: roboto;
+    font-weight: 300;
 }
 
-center {
-    margin: auto;
-    margin-top: 4rem;
-    width: 90vw;
-    max-width: 48rem;
-    background: #111;
-    padding: 1rem;
-}
-
-table {
-    border: none;
-    text-align: left;
+html {
+    background: var(--background);
     width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-thead#global-thead {
-    background-color: #555;
+.admin-header {
+    top: 0;
+    width: 100%;
+    height: 28px;
+    background: var(--surface-7);
+    display: flex;
+    position: absolute;
+    justify-content: center;
 }
 
-thead#book-thead {
-    background-color: #444;
+.admin-header-width {
+    width: 100vw;
+    height: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
-thead#book-thead tr th {
-    padding-top: 1rem;
-    font-size: 1.2rem;
+.admin-header-width p {
+    color: var(--on-background);
+    margin: 2px;
 }
 
-thead#group-thead {
-    background-color: #2a2a2a;
+.main {
+    margin-top: 160px;
+    width: 100%;
+    min-height: fit-content;
+    display: flex;
+    justify-content: center;
 }
 
-thead#group-thead tr th {
-    padding-top: 0.75rem;
-    font-size: 1.1rem;
+.main .body {
+    width: 100%;
+    max-width: 800px;
+    min-height: 80px;
+    border-radius: 4px;
+    background: var(--surface-1);
+}
+
+.body-logo {
+    width: 100%;
+    max-width: 790px;
+    margin: 5px;
+    height: 90px;
+    background-image: url(/static/logo.png), url(/static/logo-ps.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.search {
+    width: 100%;
+    max-width: 400px;
+    height: 24px;
+    background: var(--surface-1);
+    border: none;
+    border-bottom: 2px solid var(--surface-5);
+    color: var(--on-background);
+    outline: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.login {
+    margin: 5px;
+    width: calc(100% - 10px);
+    max-width: 790px;
+    color: var(--on-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login * {
+    margin: 5px;
+}
+
+.login input {
+    width: 100%;
+    max-width: 400px;
+    height: 24px;
+    background: var(--surface-1);
+    border: none;
+    border-bottom: 2px solid var(--surface-5);
+    color: var(--on-background);
+    outline: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+.table {
+    margin: 5px;
+    width: calc(100% - 10px);
+    max-width: 790px;
+    color: var(--on-background);
+}
+
+.table-header {
+    background: var(--surface-6);
+    text-align: left;
 }
 
 th,
 td {
-    padding: 0.5rem;
+    padding: 5px;
 }
 
-tbody tr:nth-child(even) {
-    background: #181818;
+.table-header th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.book-header {
+    background: var(--surface-5);
+}
+
+.group-thead {
+    background: var(--surface-4);
+}
+
+.footer {
+    margin-top: 20px;
+    color: var(--on-background);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer p {
+    opacity: 60%;
+}
+
+.footer-img {
+    margin-top: -4px;
+    width: 150px;
+    height: 40px;
+    opacity: 60%;
+    transition: 0.25s;
+    background-image: url(/static/logo-ps.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.footer-img:hover {
+    opacity: 200%;
+}
+
+
+.button {
+    height: 24px !important;
+    min-width: 86px !important;
+    background: var(--primary) !important;
+    color: var(--background) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    margin: 2px !important;
+}
+
+.button-variant {
+    height: 24px;
+    min-width: 86px;
+    background: var(--primary-variant);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 2px;
 }

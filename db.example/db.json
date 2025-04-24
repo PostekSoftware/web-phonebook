@@ -1,0 +1,63 @@
+{
+    "books": [
+        {
+            "groups": [
+                {
+                    "name": "Group 1",
+                    "numbers": [
+                        {
+                            "email": "mail@example.com",
+                            "location": "312",
+                            "name": "test person",
+                            "phoneExt": "+48000000000",
+                            "phoneInt": "123",
+                            "title": "it"
+                        },
+                        {
+                            "email": "",
+                            "location": "312",
+                            "name": "person",
+                            "phoneExt": "+48000000000",
+                            "phoneInt": "123",
+                            "title": ""
+                        },
+                        {
+                            "email": "",
+                            "location": "312",
+                            "name": "test",
+                            "phoneExt": "+48000000000",
+                            "phoneInt": "123",
+                            "title": ""
+                        }
+                    ]
+                }
+            ],
+            "name": "book 1",
+            "numbers": [
+                {
+                    "email": "email2@acme.com",
+                    "location": "217",
+                    "name": "name",
+                    "phoneExt": "+48000000000",
+                    "phoneInt": "217",
+                    "title": "title"
+                }
+            ]
+        },
+        {
+            "groups": [],
+            "name": "new book",
+            "numbers": [
+                {
+                    "email": "",
+                    "location": "5",
+                    "name": " 5",
+                    "phoneExt": "",
+                    "phoneInt": "123",
+                    "title": ""
+                }
+            ]
+        }
+    ],
+    "name": "acme"
+}

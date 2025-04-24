@@ -8,6 +8,8 @@ struct serverData
     bool boodDataLoaded = false;
     std::vector<admin> admins = std::vector<admin>();
     bool adminsLoaded = false;
+    language lang = language();
+    bool langLoaded = false;
 };
 
 struct sessionData

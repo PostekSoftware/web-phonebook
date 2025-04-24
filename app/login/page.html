@@ -4,20 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Phonebook Login - {{ page.name }}</title>
+    <link rel="icon" href="/static/icon.png">
     <link rel="stylesheet" href="/static/web-phonebook.css">
+    <script src="/static/common.js" defer></script>
 </head>
 
 <body>
-    <p><a href="/">Back</a></p>
-    <form action="/login" method="post">
-        {% if invalid %}
-        <p style="color: red;">Invalid username or password!</p>
-        {% endif %}
-        <input type="text" name="username" id="username">
-        <input type="password" name="password" id="password">
-        <input type="submit" value="login">
-    </form>
+
+    <div class="main">
+        <div class="body">
+            <div class="body-logo"></div>
+            <form class="login" action="/login" method="post">
+                <button class="button-variant" onclick="landing()">Back</button>
+                <input type="text" name="username" id="username" placeholder="Login">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <button type="submit" class="button">Login</button>
+                {% if invalid %}
+                <p style="color: var(--error);">Invalid username or password!</p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Powered by</p>
+        <a href="http://ps.01e.cc" target="_blank" rel="noopener noreferrer">
+            <div class="footer-img"></div>
+        </a>
+    </div>
 </body>
 
 </html>
