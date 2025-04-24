@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Phonebook Admin - {{ phonebook.name }}</title>
+    <script src="/static/jsoneditor.min.js"></script>
+    <style>
+        input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,8 +18,136 @@
     Logged In! {{ username }}
     <form action="/admin" method="post">
         <input type="hidden" name="logout" value="true">
-        <input type="submit" value="Logout">
+        <button type="submit">Logout</button>
     </form>
+    <br>
+    <button onclick="save()">Save phonebook</button>
+    <form id="sendForm" action="/admin" method="post" style="display: none;">
+        <input width="6rem" id="valueForm" type="text" name="update" value="">
+    </form>
+    <div id='editor_holder'></div>
+
+    <script>
+        var phonebook = {{ phonebook }}
+        console.log(phonebook)
+
+        const sendForm = document.getElementById('sendForm')
+        const valueForm = document.getElementById('valueForm')
+        const ed = document.getElementById('editor_holder');
+
+        var editor = new JSONEditor(ed, {
+            startval: phonebook,
+            theme: "html",
+            schema: {
+                type: "object",
+                title: "Phonebook",
+                properties: {
+                    name: {
+                        type: "string",
+                        title: "Organization name"
+                    },
+                    books: {
+                        type: "array",
+                        title: "Books",
+                        items: {
+                            type: "object",
+                            properties: {
+                                name: {
+                                    type: "string",
+                                    title: "Book name"
+                                },
+                                numbers: {
+                                    type: "array",
+                                    title: "Numbers",
+                                    items: {
+                                        type: "object",
+                                        properties: {
+                                            location: {
+                                                type: "string",
+                                                title: "Location"
+                                            },
+                                            title: {
+                                                type: "string",
+                                                title: "Title"
+                                            },
+                                            name: {
+                                                type: "string",
+                                                title: "Name"
+                                            },
+                                            email: {
+                                                type: "string",
+                                                title: "Email"
+                                            },
+                                            phoneInt: {
+                                                type: "string",
+                                                title: "Phone number (Internal)"
+                                            },
+                                            phoneExt: {
+                                                type: "string",
+                                                title: "Phone number (External)"
+                                            }
+                                        }
+                                    }
+                                },
+                                groups: {
+                                    type: "array",
+                                    title: "Groups",
+                                    items: {
+                                        type: "object",
+                                        properties: {
+                                            name: {
+                                                type: "string",
+                                                title: "Group name"
+                                            },
+                                            numbers: {
+                                                type: "array",
+                                                title: "Numbers",
+                                                items: {
+                                                    type: "object",
+                                                    properties: {
+                                                        location: {
+                                                            type: "string",
+                                                            title: "Location"
+                                                        },
+                                                        title: {
+                                                            type: "string",
+                                                            title: "Title"
+                                                        },
+                                                        name: {
+                                                            type: "string",
+                                                            title: "Name"
+                                                        },
+                                                        email: {
+                                                            type: "string",
+                                                            title: "Email"
+                                                        },
+                                                        phoneInt: {
+                                                            type: "string",
+                                                            title: "Phone number (Internal)"
+                                                        },
+                                                        phoneExt: {
+                                                            type: "string",
+                                                            title: "Phone number (External)"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function save() {
+            phonebook = editor.getValue();
+            valueForm.value = JSON.stringify(phonebook)
+            sendForm.submit()
+        }
+    </script>
 </body>
 
 </html>

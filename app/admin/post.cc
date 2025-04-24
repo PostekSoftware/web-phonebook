@@ -18,6 +18,12 @@ SERVER
         session->loggedIn = false;
         session->username = "";
         res.set_redirect("/login");
+    }else if (req.get_param_value("update") != ""){
+        json jsond = json::parse(req.get_param_value("update"));
+        page b = (page)jsond;
+        server.bookData = b;
+        saveDataToFile(server.bookData);
+        res.set_redirect("/");
     }
     return data;
 }

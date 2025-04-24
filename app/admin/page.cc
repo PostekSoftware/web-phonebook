@@ -13,6 +13,8 @@ SERVER
         res.set_redirect("/login", 302);
         return data;
     }
+    loadDataFromFile(server.bookData, server.boodDataLoaded);
+    data["phonebook"] = server.bookData;
     data["username"] = session->username;
     return data;
 }

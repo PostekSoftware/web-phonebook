@@ -10,7 +10,6 @@ using namespace nlohmann;
 
 struct number
 {
-    std::string id = "";
     std::string location = "";
     std::string title = "";
     std::string name = "";
@@ -20,13 +19,12 @@ struct number
 };
 inline void to_json(json &j, const number &n)
 {
-    j = json{{"id", n.id}, {"location", n.location}, {"title", n.title}, {"name", n.name}, {"email", n.email}, {"phoneInt", n.phoneInt}, {"phoneExt", n.phoneExt}};
+    j = json{{"location", n.location}, {"title", n.title}, {"name", n.name}, {"email", n.email}, {"phoneInt", n.phoneInt}, {"phoneExt", n.phoneExt}};
 };
 inline void from_json(const json &j, number &n)
 {
     try
     {
-        j.at("id").get_to(n.id);
         j.at("location").get_to(n.location);
         j.at("title").get_to(n.title);
         j.at("name").get_to(n.name);
@@ -54,19 +52,17 @@ inline void from_json(const json &j, number &n)
 
 struct group
 {
-    std::string id = "";
     std::string name = "";
     std::vector<number> numbers = std::vector<number>();
 };
 inline void to_json(json &j, const group &g)
 {
-    j = json{{"id", g.id}, {"name", g.name}, {"numbers", g.numbers}};
+    j = json{{"name", g.name}, {"numbers", g.numbers}};
 }
 inline void from_json(const json &j, group &g)
 {
     try
     {
-        j.at("id").get_to(g.id);
         j.at("name").get_to(g.name);
         j.at("numbers").get_to(g.numbers);
     }
@@ -90,20 +86,18 @@ inline void from_json(const json &j, group &g)
 
 struct book
 {
-    std::string id = "";
     std::string name = "";
     std::vector<number> numbers = std::vector<number>();
     std::vector<group> groups = std::vector<group>();
 };
 inline void to_json(json &j, const book &b)
 {
-    j = json{{"id", b.id}, {"name", b.name}, {"numbers", b.numbers}, {"groups", b.groups}};
+    j = json{{"name", b.name}, {"numbers", b.numbers}, {"groups", b.groups}};
 }
 inline void from_json(const json &j, book &b)
 {
     try
     {
-        j.at("id").get_to(b.id);
         j.at("name").get_to(b.name);
         j.at("numbers").get_to(b.numbers);
         j.at("groups").get_to(b.groups);

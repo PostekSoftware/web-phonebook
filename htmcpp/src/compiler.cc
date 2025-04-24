@@ -353,7 +353,7 @@ void loadPrebuiltPages()
         }
 
         prebuiltPages.insert({{type, path}, {ob, server}});
-        printf("Page: %s; Type: %s; Prebuilt: %s\n", path.c_str(), ((std::string)obj.at("type")).c_str(), ob.c_str());
+        printf("Page: %s; Type: %s; Prebuilt: %s\n", path == "" ? "/" : path.c_str(), ((std::string)obj.at("type")).c_str(), ob.c_str());
     }
 
     printf("\nAll prebuilt pages loaded.\nStarting the server...\n\n");

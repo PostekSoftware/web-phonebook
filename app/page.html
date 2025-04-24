@@ -41,8 +41,24 @@
                 {% for number in book.numbers %}
                 <tr>
                     <td>{{ number.location }}</td>
-                    <td>{{ number.name }}</td>
-                    <td>{{ number.phoneInt }}</td>
+                    <td>{{ number.name }} {% if number.email != "" %}<span style="font-size: 0.8rem;">({{ number.email
+                            }})
+                        </span>{% endif %}
+                        {% if number.title != "" %}
+                        <br>
+                        <p style="font-size: 0.8rem; margin-bottom: 0;">{{ number.title }}</p>
+                        {% endif %}
+                    </td>
+                    <td>{% if number.phoneInt != "" %}
+                        {{ number.phoneInt }}
+                        {% endif %}
+                        {% if number.phoneInt != "" and number.phoneExt != "" %}
+                        <br>
+                        {% endif %}
+                        {% if number.phoneExt != "" %}
+                        {{ number.phoneExt }}
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -58,7 +74,14 @@
                 {% for number in group.numbers %}
                 <tr>
                     <td>{{ number.location }}</td>
-                    <td>{{ number.name }}</td>
+                    <td>{{ number.name }} {% if number.email != "" %}<span style="font-size: 0.8rem;">({{ number.email
+                            }})
+                        </span>{% endif %}
+                        {% if number.title != "" %}
+                        <br>
+                        <p style="font-size: 0.8rem; margin-bottom: 0;">{{ number.title }}</p>
+                        {% endif %}
+                    </td>
                     <td>{{ number.phoneInt }}</td>
                 </tr>
                 {% endfor %}
