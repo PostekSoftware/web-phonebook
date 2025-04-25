@@ -21,7 +21,7 @@ SERVER
     }
     else if (req.get_param_value("update") != "")
     {
-        json jsond = json::parse(req.get_param_value("update"));
+        json jsond = json::parse(req.body);
         page b = (page)jsond;
         server.bookData = b;
         saveDataToFile(server.bookData);

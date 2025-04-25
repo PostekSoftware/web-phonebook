@@ -189,8 +189,15 @@
 
         function save() {
             phonebook = editor.getValue();
-            valueForm.value = JSON.stringify(phonebook)
-            sendForm.submit()
+            fetch("/admin?update=true", {
+                method: "POST",
+                body: JSON.stringify(phonebook)
+            }).then(() => {
+                document.location = "/";
+            })
+
+            // valueForm.value = JSON.stringify(phonebook)
+            // sendForm.submit()
         }
         function saveLang() {
             lang = editorl.getValue();

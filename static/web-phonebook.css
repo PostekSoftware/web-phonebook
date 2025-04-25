@@ -85,7 +85,7 @@ html {
     max-width: 790px;
     margin: 5px;
     height: 90px;
-    background-image: url(/static/logo.png), url(/static/logo-ps.png);
+    background-image: url(/static/logo.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -169,16 +169,23 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    scale: 80%;
 }
 
-.footer p {
+.footer a {
     opacity: 60%;
+    color: var(--on-background);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    opacity: 200%;
 }
 
 .footer-img {
-    margin-top: -4px;
-    width: 150px;
-    height: 40px;
+    width: 200px;
+    height: 60px;
     opacity: 60%;
     transition: 0.25s;
     background-image: url(/static/logo-ps.png);

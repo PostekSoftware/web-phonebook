@@ -14,7 +14,7 @@ SERVER
         return data;
     }
     loadDataFromFile(server.bookData, server.boodDataLoaded);
-    data["page"] = server.bookData;
+    data["page"] = json(server.bookData);
     data["invalid"] = req.has_param("invalid");
     return data;
 }
